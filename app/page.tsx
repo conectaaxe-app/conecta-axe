@@ -31,6 +31,8 @@ export default function Home() {
         </section>
 
         <div className="authFooter">
+          <Link href="/login">Já tenho conta</Link>
+          <br />
           Ainda não tem conta? <Link href="/cadastro">Cadastre-se</Link>
         </div>
 

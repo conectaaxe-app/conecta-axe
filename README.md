@@ -1,30 +1,33 @@
-# Conecta Axé — mobile clean start
+# Conecta Axé — mobile clean fixed
 
-Versão zerada do app, com layout 100% mobile-first.
+Versão corrigida do app mobile-first.
 
-## Rotas de preview
+## Correções desta versão
 
-- `/` — primeira tela real do app: escolha Pessoa / Casa de Axé
-- `/login` — login
-- `/feed` — início/feed
-- `/mapa` — mapa visual
-- `/evento` — tela do evento
+- Removida a barra fake de status do celular no topo.
+- Checkbox "Lembrar de mim" agora é um input real e funciona.
+- Toggle de filiação agora funciona.
+- Checkbox "Cadastrar minha casa de axé" agora funciona e exibe a etapa opcional.
+- Botão "Entrar" leva para dentro do app:
+  - Pessoa: `/feed`
+  - Casa de axé: `/casa`
+- Botão "Criar conta" leva para `/feed`.
+- Botão "Cadastrar casa" leva para `/casa`.
+- Botões "Quero ir" e "Tenho interesse" na tela do evento mudam de estado visualmente.
+- Financeiro continua fora desta versão.
+
+## Rotas
+
+- `/` — primeira tela do app
+- `/login` — login funcional visual
+- `/feed` — app/home
+- `/mapa` — mapa
+- `/evento` — evento
 - `/perfil` — perfil pessoal
 - `/casa` — perfil da casa
 - `/cadastro` — cadastro pessoa/casa
-- `/admin` — painel admin visual
-
-## Subir na Vercel
-
-1. Suba todos os arquivos para o GitHub.
-2. A Vercel detecta Next.js automaticamente.
-3. Não configure Mercado Pago agora.
-4. Não precisa de variável de ambiente nesta versão visual.
+- `/admin` — admin visual
 
 ## SQL
 
-O SQL inicial está em:
-
 `supabase/conecta_axe_schema.sql`
-
-Ele cria a estrutura base do Supabase, sem parte financeira.

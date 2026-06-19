@@ -1,12 +1,18 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
 import { LogoMark } from "@/components/LogoMark";
 import { PhoneShell } from "@/components/PhoneShell";
 
 export default function LoginPage() {
+  const [tipo, setTipo] = useState<"pessoa" | "casa">("pessoa");
+
   return (
     <div className="appStage">
       <PhoneShell>
         <LogoMark size={58} />
+
         <section className="loginContent">
           <div className="progressLine" />
 
@@ -14,8 +20,20 @@ export default function LoginPage() {
           <p>Faça login para continuar</p>
 
           <div className="segment" aria-label="Tipo de acesso">
-            <button className="active">♙ Pessoa</button>
-            <button>⌂ Casa de axé</button>
+            <button
+              type="button"
+              className={tipo === "pessoa" ? "active" : ""}
+              onClick={() => setTipo("pessoa")}
+            >
+              ♙ Pessoa
+            </button>
+            <button
+              type="button"
+              className={tipo === "casa" ? "active" : ""}
+              onClick={() => setTipo("casa")}
+            >
+              ⌂ Casa de axé
+            </button>
           </div>
 
           <label className="field">
@@ -30,18 +48,23 @@ export default function LoginPage() {
           </label>
 
           <div className="loginOptions">
-            <label className="checkbox"><span className="fakeCheck" /> Lembrar de mim</label>
+            <label className="checkbox">
+              <input className="realCheckbox" type="checkbox" />
+              Lembrar de mim
+            </label>
             <Link href="#">Esqueci minha senha</Link>
           </div>
 
-          <Link href="/feed" className="primaryButton">Entrar</Link>
+          <Link href={tipo === "casa" ? "/casa" : "/feed"} className="linkButton">
+            Entrar
+          </Link>
 
           <div className="divider">ou continue com</div>
 
           <div className="socialButtons">
-            <button className="socialButton">G</button>
-            <button className="socialButton"></button>
-            <button className="socialButton">f</button>
+            <button className="socialButton" type="button">G</button>
+            <button className="socialButton" type="button"></button>
+            <button className="socialButton" type="button">f</button>
           </div>
 
           <div className="registerLine">

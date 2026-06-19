@@ -1,9 +1,15 @@
+"use client";
+
+import { useState } from "react";
 import { BottomNav } from "@/components/BottomNav";
 import { PhoneShell } from "@/components/PhoneShell";
 import { SmallHeader } from "@/components/Header";
 import Link from "next/link";
 
 export default function EventoPage() {
+  const [vou, setVou] = useState(false);
+  const [interesse, setInteresse] = useState(false);
+
   return (
     <div className="appStage">
       <PhoneShell>
@@ -19,16 +25,28 @@ export default function EventoPage() {
             <div className="metaLine">
               <span>◷ Sáb, 15 de Junho • 20h</span>
               <span>⌖ Rua das Flores, 123 — São Caetano, Salvador — BA</span>
-              <span>◉ 2,3 km de você &nbsp;&nbsp; <b style={{ color: "var(--terracotta)" }}>Ver no mapa ›</b></span>
+              <span>◉ 2,3 km de você &nbsp;&nbsp; <Link href="/mapa" style={{ color: "var(--terracotta)", fontWeight: 800 }}>Ver no mapa ›</Link></span>
             </div>
 
             <p>Uma noite de fé, cantos, comida e celebração em honra a Oxóssi. Toda a comunidade é bem-vinda para vivenciar esse momento de axé, tradição e encontro.</p>
 
             <div className="actionStack">
-              <button className="primaryButton">Quero ir</button>
-              <button className="secondaryButton">Tenho interesse</button>
-              <button className="secondaryButton" style={{ borderColor: "var(--line)", color: "var(--green)" }}>Compartilhar evento</button>
+              <button className="primaryButton" type="button" onClick={() => setVou(!vou)}>
+                {vou ? "Confirmado: eu vou" : "Quero ir"}
+              </button>
+              <button className="secondaryButton" type="button" onClick={() => setInteresse(!interesse)}>
+                {interesse ? "Interesse marcado" : "Tenho interesse"}
+              </button>
+              <button className="secondaryButton" type="button" style={{ borderColor: "var(--line)", color: "var(--green)" }}>
+                Compartilhar evento
+              </button>
             </div>
+
+            {vou && (
+              <div className="notice">
+                Lembrete ativado: você receberá uma notificação 3 horas antes do evento.
+              </div>
+            )}
 
             <div className="cardBlock">
               <b>Casa organizadora</b>
