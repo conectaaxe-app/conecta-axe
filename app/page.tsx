@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Apple, Building2, Facebook, Feather, Lock, Mail, ShieldCheck, UsersRound } from 'lucide-react';
+import { Apple, Building2, Feather, Lock, Mail, ShieldCheck, UsersRound } from 'lucide-react';
 import { Brand } from '@/components/Brand';
 import { LogoMark } from '@/components/LogoMark';
 
@@ -60,7 +60,7 @@ export default function HomePage() {
           <div className="social-login">
             <div className="social-btn google">G</div>
             <div className="social-btn apple"><Apple size={26} fill="currentColor" /></div>
-            <div className="social-btn facebook"><Facebook size={26} fill="currentColor" /></div>
+            <div className="social-btn facebook"><span className="facebook-letter">f</span></div>
           </div>
           <p className="login-footer">Não tem conta? <Link href="/cadastro">Cadastre-se</Link></p>
         </div>
