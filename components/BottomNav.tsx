@@ -1,21 +1,22 @@
-import Link from 'next/link';
-import { Bell, Home, MapPin, Plus, UserRound } from 'lucide-react';
+import Link from "next/link";
 
-export function BottomNav({ active = 'inicio' }: { active?: string }) {
-  const item = (href: string, key: string, label: string, Icon: any) => (
-    <Link className={`nav-item ${active === key ? 'active' : ''}`} href={href}>
-      <Icon size={21} strokeWidth={1.9} />
-      <span>{label}</span>
-    </Link>
-  );
+const items = [
+  { href: "/feed", label: "Início", icon: "⌂" },
+  { href: "/mapa", label: "Mapa", icon: "⌖" },
+  { href: "/cadastro", label: "Publicar", icon: "+" },
+  { href: "/admin", label: "Notificações", icon: "⌁" },
+  { href: "/perfil", label: "Perfil", icon: "●" }
+];
 
+export function BottomNav() {
   return (
-    <nav className="bottom-nav">
-      {item('/feed', 'inicio', 'Início', Home)}
-      {item('/mapa', 'mapa', 'Mapa', MapPin)}
-      <Link className="nav-plus" href="/cadastro" aria-label="Publicar"><Plus size={32} /></Link>
-      {item('/admin', 'notificacoes', 'Notif.', Bell)}
-      {item('/perfil', 'perfil', 'Perfil', UserRound)}
+    <nav className="bottomNav">
+      {items.map((item) => (
+        <Link key={item.href} href={item.href} className={item.label === "Publicar" ? "navItem navPlus" : "navItem"}>
+          <span>{item.icon}</span>
+          <small>{item.label}</small>
+        </Link>
+      ))}
     </nav>
   );
 }

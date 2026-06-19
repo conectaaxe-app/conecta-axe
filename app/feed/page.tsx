@@ -1,60 +1,51 @@
-import { Bell, Heart, MapPin, Menu, MessageCircle, Share2 } from 'lucide-react';
-import { BottomNav } from '@/components/BottomNav';
-import { Brand } from '@/components/Brand';
-import { EventMiniCard } from '@/components/EventCard';
-import { PhoneFrame } from '@/components/PhoneFrame';
+import { BottomNav } from "@/components/BottomNav";
+import { EventStory } from "@/components/EventCard";
+import { PhoneShell } from "@/components/PhoneShell";
+import { SmallHeader } from "@/components/Header";
 
 export default function FeedPage() {
   return (
-    <main className="app-shell">
-      <PhoneFrame>
-        <div className="app-scroll">
-          <header className="app-top">
-            <Menu size={23} />
-            <Brand compact />
-            <Bell size={22} color="#C23D2A" />
-          </header>
-          <div className="location"><MapPin size={15} /> Salvador, BA</div>
-
-          <div className="section-head"><h3>Hoje tem</h3><span>Ver todos</span></div>
-          <div className="story-row">
-            <EventMiniCard title="Festa de Oxóssi" time="Hoje • 20h" />
-            <EventMiniCard title="Festa de Ogum" time="Amanhã • 19h" imageClass="img-ogum" />
-            <EventMiniCard title="Toque de Caboclo" time="Sáb • 18h" imageClass="img-caboclo" />
-            <EventMiniCard title="Festa de Iemanjá" time="Dom • 16h" imageClass="img-iemanja" />
+    <div className="appStage">
+      <PhoneShell>
+        <SmallHeader title="Conecta Axé" />
+        <section className="content">
+          <div className="heroCard">
+            <b>Salvador, BA</b>
+            <h1 style={{ margin: "10px 0 6px", fontSize: 28 }}>Hoje tem axé perto de você</h1>
+            <p style={{ margin: 0 }}>Eventos oficiais, casas e comunidade no raio inicial de 10 km.</p>
           </div>
 
-          <div className="section-head"><h3>Feed da comunidade</h3></div>
-          <article className="feed-post">
-            <div className="post-head">
-              <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-                <div className="avatar" />
-                <div><strong>Ilê Axé Odé Ofaguerangi</strong><span>Salvador, BA • 2h</span></div>
+          <div className="sectionHeader">
+            <h2>Hoje Tem</h2>
+            <a>Ver todos</a>
+          </div>
+
+          <div className="storyScroller">
+            <EventStory title="Festa de Oxóssi" time="Hoje • 20h" />
+            <EventStory title="Festa de Ogum" time="Amanhã • 19h" color="blue" />
+            <EventStory title="Toque de Caboclo" time="Sáb • 18h" color="gold" />
+            <EventStory title="Festa de Iemanjá" time="Dom • 16h" color="blue" />
+          </div>
+
+          <div className="sectionHeader">
+            <h2>Feed da comunidade</h2>
+          </div>
+
+          <article className="feedPost">
+            <div className="postHead">
+              <div className="avatar">A</div>
+              <div>
+                <b>Ilê Axé Odé Ofaguerangi</b>
+                <span>compartilhou um evento • 2h</span>
               </div>
-              <strong>•••</strong>
             </div>
             <p>É com muita alegria que convidamos todos para a nossa Festa de Oxóssi!</p>
-            <div className="post-image img-oxossi" />
-            <div className="post-actions"><span><Heart size={17} /> 128</span><span><MessageCircle size={17} /> 24</span><span><Share2 size={17} /> Compartilhar</span></div>
+            <div className="postImage">Oxóssi</div>
+            <div>♥ 128 &nbsp;&nbsp; ◌ 24 &nbsp;&nbsp; ↗ Compartilhar</div>
           </article>
-
-          <article className="feed-post">
-            <div className="post-head">
-              <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-                <div className="avatar" />
-                <div><strong>João de Oxóssi</strong><span>compartilhou um evento</span></div>
-              </div>
-              <strong>•••</strong>
-            </div>
-            <p>Estarei nessa festa. Quem mais vai? 🌿🏹</p>
-            <div className="event-list-item" style={{ gridTemplateColumns: '80px 1fr' }}>
-              <div className="event-thumb img-oxossi" />
-              <div><strong>Festa de Oxóssi</strong><p>Hoje • 20h</p><span>Ilê Axé Odé Ofaguerangi</span></div>
-            </div>
-          </article>
-        </div>
-        <BottomNav active="inicio" />
-      </PhoneFrame>
-    </main>
+        </section>
+        <BottomNav />
+      </PhoneShell>
+    </div>
   );
 }

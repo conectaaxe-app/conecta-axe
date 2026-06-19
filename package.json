@@ -1,6 +1,6 @@
 {
-  "name": "conecta-axe-app",
-  "version": "0.1.0",
+  "name": "conecta-axe-mobile-clean",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,16 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@supabase/supabase-js": "latest",
-    "lucide-react": "latest",
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "next": "16.2.9",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
-    "typescript": "latest"
+    "@types/node": "^20.19.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^5.9.3"
   }
 }

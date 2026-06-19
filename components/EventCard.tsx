@@ -1,39 +1,28 @@
-import { CalendarDays, Heart, MapPin, UsersRound } from 'lucide-react';
+import Link from "next/link";
 
-export function EventMiniCard({ title, time, imageClass = 'img-oxossi' }: { title: string; time: string; imageClass?: string }) {
+export function EventStory({ title, time, color = "green" }: { title: string; time: string; color?: "green" | "blue" | "gold" }) {
   return (
-    <article className="story-card">
-      <div className={`story-img ${imageClass}`}></div>
-      <strong>{title}</strong>
-      <span>{time}</span>
-    </article>
-  );
-}
-
-export function EventListItem({ title, house, time, km, imageClass = 'img-oxossi' }: { title: string; house: string; time: string; km: string; imageClass?: string }) {
-  return (
-    <article className="event-list-item">
-      <div className={`event-thumb ${imageClass}`}></div>
-      <div>
-        <strong>{title}</strong>
-        <p>{house}</p>
-        <span>{time} • {km}</span>
+    <Link href="/evento" className={`eventStory ${color}`}>
+      <div className="eventPoster">
+        <strong>{title.split(" ").slice(-1)[0]}</strong>
+        <small>Festa de</small>
       </div>
-      <span className="chevron">›</span>
-    </article>
+      <b>{title}</b>
+      <span>{time}</span>
+    </Link>
   );
 }
 
-export function MetricsRow() {
+export function EventRow({ title, house, when, distance }: { title: string; house: string; when: string; distance: string }) {
   return (
-    <div className="metrics-row">
-      <span><UsersRound size={17} />356 interessados</span>
-      <span><Heart size={17} />189 vou</span>
-    </div>
+    <Link href="/evento" className="eventRow">
+      <div className="thumb"><strong>{title.split(" ").slice(-1)[0]}</strong></div>
+      <div>
+        <b>{title}</b>
+        <span>{house}</span>
+        <small>{when} • {distance}</small>
+      </div>
+      <i>›</i>
+    </Link>
   );
-}
-
-export function DetailLine({ icon, children }: { icon: 'calendar' | 'pin' | 'map'; children: React.ReactNode }) {
-  const Icon = icon === 'calendar' ? CalendarDays : MapPin;
-  return <p className="detail-line"><Icon size={18} />{children}</p>;
 }

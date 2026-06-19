@@ -1,33 +1,38 @@
-import { AlertTriangle, BadgeDollarSign, BarChart3, CalendarDays, Flag, Home, ShieldCheck, UsersRound } from 'lucide-react';
-import { BottomNav } from '@/components/BottomNav';
-import { Brand } from '@/components/Brand';
-import { PhoneFrame } from '@/components/PhoneFrame';
+import { BottomNav } from "@/components/BottomNav";
+import { PhoneShell } from "@/components/PhoneShell";
+import { SmallHeader } from "@/components/Header";
 
 export default function AdminPage() {
-  const cards: Array<{ title: string; desc: string; Icon: any }> = [
-    { title: 'Usuários', desc: 'Gerenciar perfis pessoais e bloqueios', Icon: UsersRound },
-    { title: 'Casas de axé', desc: 'Casas cadastradas e administradores', Icon: Home },
-    { title: 'Eventos', desc: 'Eventos oficiais e denúncias', Icon: CalendarDays },
-    { title: 'Central de Denúncias', desc: 'Posts, perfis, casas e eventos denunciados', Icon: Flag },
-    { title: 'Moderação automática', desc: 'Palavras, regras e níveis de gravidade', Icon: ShieldCheck },
-    { title: 'Destaques internos', desc: 'Top 3, recomendações e campanhas', Icon: BarChart3 },
-    { title: 'Monetização', desc: 'Fase futura: Mercado Pago, destaques e planos', Icon: BadgeDollarSign },
-    { title: 'Alertas críticos', desc: 'Ameaças, racismo, intolerância e golpes', Icon: AlertTriangle }
+  const items = [
+    ["Usuários", "Perfis, bloqueios e reincidências"],
+    ["Casas de Axé", "Gestores, administradores e agenda"],
+    ["Eventos", "Eventos ativos, futuros e denunciados"],
+    ["Central de Denúncias", "Posts, comentários, perfis e fotos"],
+    ["Regras de Moderação", "Palavras, níveis e ações automáticas"],
+    ["Destaques Internos", "Conteúdo estratégico rotativo"]
   ];
+
   return (
-    <main className="app-shell">
-      <PhoneFrame>
-        <div className="app-scroll">
-          <header className="app-top"><Brand compact /><strong>Admin</strong></header>
-          <div className="notice"><strong>Painel administrativo web.</strong><br />No MVP visual, esta área representa a futura central de moderação, usuários, casas, eventos e destaques internos.</div>
-          <div className="admin-grid">
-            {cards.map(({ title, desc, Icon }) => (
-              <div className="admin-card" key={title}><div className="choice-icon" style={{ width: 46, height: 46 }}><Icon size={23} /></div><div><strong>{title}</strong><span>{desc}</span></div></div>
+    <div className="appStage">
+      <PhoneShell>
+        <SmallHeader title="Admin" />
+        <section className="content">
+          <div className="heroCard">
+            <b>Administrador Master</b>
+            <h1 style={{ margin: "10px 0 6px", fontSize: 28 }}>Painel do Conecta Axé</h1>
+            <p style={{ margin: 0 }}>Controle da plataforma, moderação e estrutura.</p>
+          </div>
+          <div className="adminGrid">
+            {items.map(([title, desc]) => (
+              <div className="adminCard" key={title}>
+                <div><b>{title}</b><span>{desc}</span></div>
+                <span>›</span>
+              </div>
             ))}
           </div>
-        </div>
-        <BottomNav active="notificacoes" />
-      </PhoneFrame>
-    </main>
+        </section>
+        <BottomNav />
+      </PhoneShell>
+    </div>
   );
 }
